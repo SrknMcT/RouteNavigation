@@ -1,0 +1,11 @@
+{
+  "appId": "com.routenavigaton",
+  "appName": "routenavapp",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
