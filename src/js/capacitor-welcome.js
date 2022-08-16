@@ -106,7 +106,7 @@ window.customElements.define(
       self.shadowRoot.querySelector('#navigate').addEventListener('click', async function (e) {
         try {
 
-          const callbackId = await Navigation.startNavigation({ valueKey: "pk.eyJ1IjoiZmF0aWhhbHAiLCJhIjoiY2pkYzZhb3N1MGR0YjJ4bm9lMzNwdWliZyJ9.WcqDfiRByPFDgz5SunBUKg", valueS: "40.773863,29.400298", valueE: "41.09307,28.80203" }, (response) => {
+          const callbackId = await Navigation.startNavigation({ valueKey: "Your Public Key ", valueS: "40.773863,29.400298", valueE: "41.09307,28.80203" }, (response) => {
 
             console.log("Response from Code " + response.navigationstatus)
 
