@@ -440,6 +440,9 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
         destinationLatitude = latlongDest[0].toDouble()
         destinationLongitude = latlongDest[1].toDouble()
 
+        ResourceOptionsManager.getDefault(this, publicKey).update {
+            tileStoreUsageMode(TileStoreUsageMode.READ_ONLY)
+        }
 
         binding = MapboxActivityTurnByTurnExperienceBinding.inflate(layoutInflater)
         setContentView(binding.root)

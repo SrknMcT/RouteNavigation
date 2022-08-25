@@ -4,5 +4,4 @@
     <string name="title_activity_main">routenavapp</string>
     <string name="package_name">com.routenavigaton</string>
     <string name="custom_url_scheme">com.routenavigaton</string>
-    <string name="mapbox_access_token">Your public key here</string>
 </resources>
