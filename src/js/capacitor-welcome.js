@@ -2,7 +2,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { Camera } from '@capacitor/camera';
 import { registerPlugin } from '@capacitor/core';
 
-const Navigation = registerPlugin('Navigation');
+const Navigation = registerPlugin('CapacitorMapboxNavigation');
 
 
 window.customElements.define(

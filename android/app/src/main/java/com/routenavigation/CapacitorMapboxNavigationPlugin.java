@@ -15,8 +15,8 @@ import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.ActivityCallback;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
-@CapacitorPlugin(name = "Navigation")
-public class NavigationPlugin extends Plugin {
+@CapacitorPlugin(name = "CapacitorMapboxNavigation")
+public class CapacitorMapboxNavigationPlugin extends Plugin {
 
     Implementation implementation;
     String navigationStatus = "notAssignedYet";

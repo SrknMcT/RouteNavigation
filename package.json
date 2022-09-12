@@ -16,6 +16,7 @@
     "@capacitor/android": "^4.0.1",
     "@capacitor/camera": "latest",
     "@capacitor/core": "latest",
+    "@capacitor/ios": "^4.2.0",
     "@capacitor/splash-screen": "latest"
   },
   "devDependencies": {
