@@ -27,7 +27,7 @@ public class CapacitorMapboxNavigationPlugin extends Plugin {
     }
 
     @PluginMethod(returnType = PluginMethod.RETURN_CALLBACK)
-    public void startNavigation(PluginCall call) {
+    public void show(PluginCall call) {
 
         call.setKeepAlive(true);
         String pointStart = call.getString("valueS");
