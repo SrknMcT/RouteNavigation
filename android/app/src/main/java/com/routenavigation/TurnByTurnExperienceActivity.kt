@@ -94,6 +94,7 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
 
     lateinit var permissionsManager: PermissionsManager
 
+    var isSceneLoaded: Boolean = false;
 
     var navigationStatus: String = "navigationWaitsToBeStarted"
 
@@ -295,6 +296,7 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
      */
     private val locationObserver = object : LocationObserver {
         var firstLocationUpdateReceived = false
+        var isLaunchNav: Boolean = true
 
         override fun onNewRawLocation(rawLocation: Location) {
             // not handled
@@ -302,6 +304,7 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
 
         override fun onNewLocationMatcherResult(locationMatcherResult: LocationMatcherResult) {
             val enhancedLocation = locationMatcherResult.enhancedLocation
+
             // update location puck's position on the map
             navigationLocationProvider.changePosition(
                 location = enhancedLocation,
@@ -322,6 +325,17 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
                         .build()
                 )
             }
+            enhancedLocation?.let {
+                // not null do something
+                if (isLaunchNav && isSceneLoaded) {
+                    println("Coor: " + it)
+                    findRoute(Point.fromLngLat(destinationLongitude, destinationLatitude))
+                    isLaunchNav = false
+
+                }
+            }
+
+
         }
     }
 
@@ -468,7 +482,7 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
                 NavigationOptions.Builder(this.applicationContext)
                     .accessToken(publicKey)
                     // comment out the location engine setting block to disable simulation
-                    .locationEngine(replayLocationEngine)
+                    // .locationEngine(replayLocationEngine)
                     .build()
             )
         }
@@ -568,8 +582,6 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
                 findRoute(point)
                 true
             }
-            //uygulama açılışında navigasyon başlaması için
-            findRoute(Point.fromLngLat(destinationLongitude, destinationLatitude))
         }
 
         // initialize view interactions
@@ -606,6 +618,7 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
             permissionsManager = PermissionsManager(this)
             permissionsManager.requestLocationPermissions(this)
         }
+
     }
 
     @SuppressLint("MissingPermission")
@@ -633,7 +646,6 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
 
                         // For changing start point to user location , some codes must be added here
 
-
                     )
                 )
             )
@@ -641,6 +653,7 @@ class TurnByTurnExperienceActivity : AppCompatActivity(), PermissionsListener {
             mapboxReplayer.playFirstLocation()
 
         }
+        isSceneLoaded = true
 
     }
 
